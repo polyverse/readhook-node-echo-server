@@ -2,7 +2,7 @@
 
 buildtarget()
 {
-	command="docker build -t polyverse/redhook-node-echo-server -t internal.hub.polyverse.io/redhook-node-echo-server ."
+	command="docker build --no-cache -t polyverse/redhook-node-echo-server -t internal.hub.polyverse.io/redhook-node-echo-server ."
 	echo $command
 	$command
 }
