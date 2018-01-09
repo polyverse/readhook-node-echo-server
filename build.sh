@@ -9,7 +9,7 @@ buildtarget()
 
 #mkdir ./redhook
 #cp ../redhook/redhook.c ./redhook
-buildtarget "$@"
+buildtarget
 #rm -rf ./redhook
 
 if [ "$1" == "-p" ]; then
