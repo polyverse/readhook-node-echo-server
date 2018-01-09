@@ -7,7 +7,10 @@ buildtarget()
 	$command
 }
 
-	buildtarget "$@"
+#mkdir ./redhook
+#cp ../redhook/redhook.c ./redhook
+buildtarget "$@"
+#rm -rf ./redhook
 
 if [ "$1" == "-p" ]; then
 	docker push polyverse/redhook-node-echo-server
