@@ -11,7 +11,7 @@ buildtarget()
 #cp ../redhook/redhook.c ./redhook
 buildtarget
 #rm -rf ./redhook
-
+ 
 if [ "$1" == "-p" ]; then
 	docker push polyverse/redhook-node-echo-server
 	docker push internal.hub.polyverse.io/redhook-node-echo-server
