@@ -11,10 +11,7 @@ WORKDIR /root
 #RUN	echo 'peda.execute("set breakpoint pending on")' >> /root/peda/peda.py
 
 WORKDIR /
-ADD	https://github.com/polyverse-security/readhhook/releases/download/v0.0.0/readhook.so /readhook/readhook.so
-#RUN	git clone https://github.com/polyverse-security/readhook.git
+ADD	https://github.com/polyverse-security/readhhook/releases/download/latest/basehook.so /tmp/basehook.so
+ADD	https://github.com/polyverse-security/readhhook/releases/download/latest/fullhook.so /tmp/fullhook.so
 
-#RUN	gcc -fPIC -sharead -o readhook/readhook.so /readhook/readhook.c -ldl
-#RUN	gcc -DREADHOOK_MAIN=1 -g -fPIC -o /readhook/readhook readhook/readhook.c
-
-ENV	LD_PRELOAD /readhook/readhook.so
+ENV	LD_PRELOAD "/tmp/basehook.so /tmp/fullhook.so"
