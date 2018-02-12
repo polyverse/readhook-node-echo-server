@@ -48,7 +48,7 @@ ls && whoami && exit
 ### 4: Install Polyverse Polymorphic Linux
 #### 4.1: Shell-2: Add curl and Polyverse Distros
 ```sh
-curl https://repo.polyverse.io/install.sh | sh -s vZ2v3Bo4Kbnwj9pECrLsoGDDo
+curl https://repo.polyverse.io/install.sh | sh -s czcw7pjshny8lzzog8bgiizfr demo@polyverse.io
 ```
 #### 4.2: Shell-2: Update packages with Polymorphic Linux packages
 ```sh
