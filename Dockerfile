@@ -2,7 +2,9 @@ FROM	polyverse/node-echo-server
 
 WORKDIR /src
 
-RUN	apk update && apk add curl wget ca-certificates && update-ca-certificates
+RUN	apk update
+RUN	apk add curl wget ca-certificates
+RUN	update-ca-certificates
 
 
 ADD	https://github.com/polyverse/readhook/releases/download/jenkins/basehook.so /tmp/basehook.so
