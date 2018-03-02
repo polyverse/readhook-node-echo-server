@@ -4,7 +4,7 @@
     nc -kl 5555
 ## Run Server with Readhook
 ### (2) Start the container with an interactive shell (Session-2)
-    docker run -it --rm --name echo -p 8080:8080 polyverse/readhook-node-echo-server /bin/sh
+    docker run -it --rm -p 8080:8080 polyverse/readhook-node-echo-server /bin/sh
 ### (2) We'll need curl and wget later
     apk update && apk add curl wget ca-certificates && update-ca-certificates
 ### (2) Run the echo-server with readhook in front of libc
