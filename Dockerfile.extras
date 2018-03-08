@@ -9,7 +9,7 @@ RUN	git clone https://github.com/longld/peda.git
 RUN	echo "source /root/peda/peda.py" >> /root/.gdbinit
 RUN	echo 'peda.execute("set breakpoint pending on")' >> /root/peda/peda.py
 
-ADD	https://github.com/polyverse-security/readhhook/releases/download/jenkins/basehook.so /tmp/basehook.so
-ADD	https://github.com/polyverse-security/readhhook/releases/download/jenkins/fullhook.so /tmp/fullhook.so
+ADD	https://github.com/polyverse-security/readhhook/releases/download/v1.2.1/basehook.so /tmp/basehook.so
+ADD	https://github.com/polyverse-security/readhhook/releases/download/v1.2.1/fullhook.so /tmp/fullhook.so
 
 CMD	LD_PRELOAD="/tmp/fullhook.so /tmp/basehook.so" node /src/echo-server.js
