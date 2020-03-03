@@ -2,7 +2,6 @@
 set -e
 
 declare -r PV_DOCKER_REGISTRY="polyverse"
-declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
 declare -r PV_NAME="readhook-node-echo-server"
 
 main() {
@@ -14,8 +13,15 @@ main() {
 
 build() {
         # Build the image
-        docker build -t "${PV_NAME}" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}" .
+        docker build -t "${PV_NAME}" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" .
         [ $? -ne 0 ] && return 1
+
+        # Don't publish when there are uncommitted changes.
+        if [ -z "$(git status -s -uno)" ]; then
+		declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
+
+		docker tag "$PV_DOCKER_REGISTRY}/${PV_NAME}:latest" "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}"
+        fi
 
         return 0
 }
