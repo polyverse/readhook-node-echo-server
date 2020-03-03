@@ -1,4 +1,4 @@
-FROM	polyverse/node-echo-server
+FROM	polyverse/node-echo-server:daed7b69ee5a6c17214efb4ba474d58205ace951
 
 WORKDIR	/src
 RUN	apk update && apk add curl wget ca-certificates && update-ca-certificates
