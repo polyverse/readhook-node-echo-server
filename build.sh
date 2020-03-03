@@ -16,7 +16,7 @@ build() {
         docker build -t "${PV_NAME}" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" .
         [ $? -ne 0 ] && return 1
 
-        # Don't publish when there are uncommitted changes.
+        # Don't tag when there are uncommitted changes.
         if [ -z "$(git status -s -uno)" ]; then
 		declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
 
