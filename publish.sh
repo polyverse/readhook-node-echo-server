@@ -3,7 +3,7 @@ set -e
 
 declare -r PV_DOCKER_REGISTRY="polyverse"
 declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
-declare -r PV_IMAGE_NAME="readhook-node-echo-server"
+declare -r PV_NAME="readhook-node-echo-server"
 
 main() {
         publish
