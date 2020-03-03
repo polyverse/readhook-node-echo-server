@@ -1,8 +1,24 @@
 #!/bin/bash
+set -e
 
-build()
-{
-	docker build -t polyverse/readhook-node-echo-server .
+declare -r PV_DOCKER_REGISTRY="polyverse"
+declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
+declare -r PV_NAME="readhook-node-echo-server"
+
+main() {
+        build
+        [ $? -ne 0 ] && return 1
+
+        return 0
 }
 
-build
+build() {
+        # Build the (close to production) "base" image
+        docker build -t "${PV_NAME}" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" -t "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}" .
+        [ $? -ne 0 ] && return 1
+
+        return 0
+}
+
+main "$@"
+exit $?

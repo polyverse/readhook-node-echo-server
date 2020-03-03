@@ -1,8 +1,29 @@
 #!/bin/bash
+set -e
 
-push()
-{
-	docker push polyverse/readhook-node-echo-server
+declare -r PV_DOCKER_REGISTRY="polyverse"
+declare -r PV_GIT_COMMIT="$(git rev-parse --verify HEAD)"
+declare -r PV_IMAGE_NAME="readhook-node-echo-server"
+
+main() {
+        publish
+        [ $? -ne 0 ] && return 1
+
+        return 0
 }
 
-push
+publish() {
+	# Don't publish when there are uncommitted changes.
+	if [ ! -z "$(git status -s -uno)" ]; then
+		echo "COMMIT IS DIRTY, aborting"
+		exit 1
+	fi
+
+        docker push "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}"
+        [ $? -ne 0 ] && return 1
+
+        return 0
+}
+
+main "$@"
+exit $?
