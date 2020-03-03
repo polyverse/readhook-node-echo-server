@@ -19,7 +19,10 @@ publish() {
 		exit 1
 	fi
 
-        docker push "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest" "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}"
+        docker push "${PV_DOCKER_REGISTRY}/${PV_NAME}:latest"
+        [ $? -ne 0 ] && return 1
+
+        docker push "${PV_DOCKER_REGISTRY}/${PV_NAME}:${PV_GIT_COMMIT}"
         [ $? -ne 0 ] && return 1
 
         return 0
