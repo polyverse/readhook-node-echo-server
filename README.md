@@ -2,7 +2,7 @@
 Test bed for using readhook to hook node-echo-server application.
 ## Running
 ```
-docker run -d --rm -p 8080:8080 polyverse/readhook-node-echo-server
+docker run -dt --rm -p 8080:8080 polyverse/readhook-node-echo-server
 ```
 ## Running interactively
 ```
