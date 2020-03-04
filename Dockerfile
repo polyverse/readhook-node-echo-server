@@ -4,7 +4,7 @@ WORKDIR	/src
 RUN	apk update && apk add bash curl wget ca-certificates && update-ca-certificates
 
 # Packages needed by our interventions (Moved up so docker will have the layer cached during development)
-RUN     apk add libunwind-dev
+RUN     apk add gcompat libc6-compat libunwind-dev
 
 # Code motion
 ADD     vendor/polyverse-security/twiddler-rel.tar /opt/pv/twiddler
