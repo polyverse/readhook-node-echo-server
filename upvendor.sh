@@ -2,10 +2,13 @@
 set -e
 
 # Enumerate the vendors in this file
-VENDORS=('polyverse')
+VENDORS=('polyverse' 'polyverse-security')
 
 # polyverse commitshas
 POLYVERSE_READHOOK_VER="v1.3.0-alpha"
+
+# polyverse-security commitshas
+POLYVERSE_SECURITY_TWIDDLER_SHA="ca91271575925ba14db226cb02cea7bd87e02c5c"
 
 function main() {
 	VENDOR_ROOT="${PWD}/vendor"
@@ -37,6 +40,16 @@ function polyverse() {
 	else
 		wget -nv https://github.com/polyverse/readhook/releases/download/${POLYVERSE_READHOOK_VER}/basehook.so
 		wget -nv https://github.com/polyverse/readhook/releases/download/${POLYVERSE_READHOOK_VER}/fullhook.so
+	fi
+}
+
+function polyverse-security() {
+        if [[ -n "$PV_UPVENDOR_LOCAL" ]]; then # (Convenience for development)
+		cp -v ../../../../polyverse-security/pe-binary-scrambler-hook/out/twiddler-dev.tar .
+		cp -v ../../../../polyverse-security/pe-binary-scrambler-hook/out/twiddler-rel.tar .
+	else
+		aws s3 cp s3://polyverse-artifacts/twiddler/twiddler-dev-${POLYVERSE_SECURITY_TWIDDLER_SHA}.tar twiddler-dev.tar
+		aws s3 cp s3://polyverse-artifacts/twiddler/twiddler-rel-${POLYVERSE_SECURITY_TWIDDLER_SHA}.tar twiddler-rel.tar
 	fi
 }
 
