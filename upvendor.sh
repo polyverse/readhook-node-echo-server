@@ -8,7 +8,7 @@ VENDORS=('polyverse' 'polyverse-security')
 POLYVERSE_READHOOK_VER="v1.3.0-alpha"
 
 # polyverse-security commitshas
-POLYVERSE_SECURITY_TWIDDLER_SHA="bf67a47dc8d323f854debbc79918f8a61fdc9e2e.tar"
+POLYVERSE_SECURITY_TWIDDLER_SHA="bf67a47dc8d323f854debbc79918f8a61fdc9e2e"
 
 function main() {
 	VENDOR_ROOT="${PWD}/vendor"
