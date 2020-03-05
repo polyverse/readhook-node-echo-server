@@ -5,7 +5,7 @@ set -e
 VENDORS=('polyverse' 'polyverse-security')
 
 # polyverse commitshas
-POLYVERSE_READHOOK_VER="v1.3.0-jitrop"
+POLYVERSE_READHOOK_VER="v1.3.0-jitrop2"
 
 # polyverse-security commitshas
 POLYVERSE_SECURITY_TWIDDLER_SHA="1c01ac5115b88ff7d78e324bc1f31d78a70e5b4e"
