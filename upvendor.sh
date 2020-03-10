@@ -5,7 +5,7 @@ set -e
 VENDORS=('polyverse' 'polyverse-security')
 
 # polyverse commitshas
-POLYVERSE_READHOOK_VER="v1.3.0-jitrop3"
+POLYVERSE_READHOOK_VER="v1.3.0-jitrop4"
 
 # polyverse-security commitshas
 POLYVERSE_SECURITY_TWIDDLER_SHA="62fe9e0a0281c21b956d70ca08a60eba1120a4f1"
@@ -44,7 +44,7 @@ function polyverse() {
 }
 
 function polyverse-security() {
-        if [[ -n "$PV_UPVENDOR_LOCAL" ]]; then # (Convenience for development)
+	if [[ -n "$PV_UPVENDOR_LOCAL" ]]; then # (Convenience for development)
 		cp -v ../../../../polyverse-security/pe-binary-scrambler-hook/out/twiddler-dev.tar .
 		cp -v ../../../../polyverse-security/pe-binary-scrambler-hook/out/twiddler-rel.tar .
 	else
